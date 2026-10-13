@@ -1,12 +1,12 @@
 @import "tailwindcss";
-@import "@fontsource-variable/montserrat";
+@import "@fontsource-variable/open-sans";
 
 /* ---------------------------------------------------------------
    Tokens de marca GEINTECH (colores tomados del logo)
    Se usan como clases de Tailwind: bg-brand-navy, text-brand-green...
 ---------------------------------------------------------------- */
 @theme {
-  --font-sans: "Montserrat Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Open Sans Variable", ui-sans-serif, system-ui, sans-serif;
 
   --color-brand-navy: #141f4d;
   --color-brand-navy-dark: #0b1233;
@@ -21,7 +21,7 @@
   html {
     scroll-behavior: smooth;
     /* Compensa el header fijo al navegar con anclas (#servicios, etc.) */
-    scroll-padding-top: 5rem;
+    scroll-padding-top: 6rem;
   }
 
   body {

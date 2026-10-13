@@ -15,7 +15,7 @@
     "moodle:build": "sass --no-source-map moodle/login.scss moodle/preview/login.css"
   },
   "dependencies": {
-    "@fontsource-variable/montserrat": "^5.3.0",
+    "@fontsource-variable/open-sans": "^5.3.0",
     "@tailwindcss/vite": "^4.3.3",
     "astro": "^7.3.8",
     "tailwindcss": "^4.3.3"

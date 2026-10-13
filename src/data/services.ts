@@ -2,8 +2,6 @@ import type { ImageMetadata } from 'astro';
 
 import sistemasGestion from '../assets/services/sistemas-integrados-gestion.png';
 import seguridadSalud from '../assets/services/seguridad-salud-trabajo.png';
-import mantenimiento from '../assets/services/mantenimiento-industrial.png';
-import automatizacion from '../assets/services/automatizacion-industrial.png';
 import solucionesTecnologicas from '../assets/services/soluciones-tecnologicas.png';
 import capacitacion from '../assets/services/capacitacion.png';
 
@@ -27,49 +25,33 @@ export interface Service {
 
 export const services: Service[] = [
   {
-    title: 'Sistemas integrados de gestión',
+    title: 'Auditorias y Homologación',
     description:
-      'Diagnóstico, implementación y auditoría de sistemas de gestión para que tu empresa trabaje con procesos ordenados y certificables.',
+      'Preparamos a tu empresa para superar con éxito las exigentes auditorías de homologación (SGS, Bureau Veritas, Hodelpe). Implementamos sistemas de gestión ágiles que te abren las puertas para licitar con las grandes mineras e industrias del país.',
     icon: 'clipboard',
     image: sistemasGestion,
     highlights: ['ISO 9001', 'ISO 14001', 'ISO 45001'],
   },
   {
-    title: 'Seguridad y salud en el trabajo',
+    title: 'Cumplimiento SSOMA in Situ',
     description:
-      'Programas, matrices IPERC, planes de emergencia y asesoría para cumplir la Ley N.° 29783 y proteger a tu personal.',
+      'Evita paralizaciones y multas de SUNAFIL. Nos encargamos del diagnóstico normativo, la actualización de tus matrices IPERC y el soporte a tu Comité de SST, adaptándonos a la realidad operativa de tu taller o planta sin generar burocracia.',
     icon: 'shield',
     image: seguridadSalud,
     highlights: ['IPERC', 'Plan anual SST', 'Inspecciones'],
   },
   {
-    title: 'Mantenimiento y gestión de activos',
+    title: 'Plataforma SSOMA 100% Digital',
     description:
-      'Planes de mantenimiento preventivo y predictivo que reducen paradas no programadas y alargan la vida útil de tus equipos.',
-    icon: 'wrench',
-    image: mantenimiento,
-    highlights: ['Preventivo', 'Predictivo', 'Indicadores KPI'],
-  },
-  {
-    title: 'Automatización y control industrial',
-    description:
-      'Integración de sensores, tableros y sistemas de control para procesos más precisos, seguros y eficientes.',
-    icon: 'cpu',
-    image: automatizacion,
-    highlights: ['PLC y HMI', 'Instrumentación', 'Tableros de control'],
-  },
-  {
-    title: 'Soluciones tecnológicas',
-    description:
-      'Digitalizamos tus procesos con herramientas a medida: tableros de indicadores, sistemas de registro y automatización de reportes.',
+      'Olvídate de los reportes en papel y los Excel desactualizados. Digitalizamos tus IPERC, auditorias, inspecciones de campo, control de EPPs y levantamiento de hallazgos mediante nuestra plataforma web accesible desde cualquier dispositivo móvil, con indicadores en tiempo real.',
     icon: 'chart',
     image: solucionesTecnologicas,
     highlights: ['Transformación digital', 'Dashboards', 'Software a medida'],
   },
   {
-    title: 'Capacitación y formación',
+    title: 'Capacitación y Entrenamiento',
     description:
-      'Cursos presenciales y virtuales dictados por especialistas, con certificación y acceso a nuestra Aula Virtual.',
+      'Entrenamiento técnico especializado para operarios y supervisores. Destacamos en el uso seguro de herramientas de poder y trabajos de alto riesgo. Disponible de forma presencial en tu planta o 24/7 a través de nuestra Aula Virtual certificada.',
     icon: 'academic',
     image: capacitacion,
     highlights: ['In-house', 'Aula Virtual', 'Certificación'],

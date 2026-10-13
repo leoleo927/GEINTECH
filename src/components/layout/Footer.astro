@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets';
-import isotipo from '../../assets/brand/isotipo-geintech.png';
+import logoNegativo from '../../assets/brand/logo-geintech-negativo.png';
 import Icon from '../ui/Icon.astro';
 import { company, contact, mapsUrl, navLinks, phoneHref, virtualClassroomUrl } from '../../data/site';
 
@@ -10,11 +10,9 @@ const year = new Date().getFullYear();
 <footer class="bg-brand-navy-dark text-slate-300">
   <div class="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-3 lg:px-8">
     <div>
-      <a href="/#inicio" class="flex items-center gap-3">
-        <span class="rounded-xl bg-white p-2">
-          <Image src={isotipo} alt="" format="png" class="size-9" />
-        </span>
-        <span class="text-2xl font-extrabold tracking-wide text-white">{company.name}</span>
+      <!-- Logo en negativo (texto blanco) para fondos oscuros -->
+      <a href="/#inicio" class="inline-block" aria-label={`${company.name}, ir al inicio`}>
+        <Image src={logoNegativo} alt={company.name} format="png" class="h-14 w-auto" />
       </a>
       <p class="mt-4 max-w-xs text-sm leading-relaxed">{company.description}</p>
     </div>

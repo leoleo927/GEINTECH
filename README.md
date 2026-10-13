@@ -53,7 +53,7 @@ El botón "Aula Virtual" lleva al login del Moodle alojado en SiteGround (`virtu
 - **Colores de marca:** variables `--color-brand-*` en `src/styles/global.css`.
 
 Las imágenes se procesan con `astro:assets` manteniendo el formato **PNG** (`format="png"`).
-Las fotos actuales son de Unsplash (uso comercial libre); el detalle está en `src/assets/CREDITS.md`.
+El origen de cada imagen está en `src/assets/CREDITS.md`.
 Antes de agregar una foto nueva, redúcela a su ancho máximo de uso (≈800 px para servicios,
 ≈1600 px para el fondo del inicio) para que la página cargue rápido.
 

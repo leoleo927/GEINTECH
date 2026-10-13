@@ -1,16 +1,13 @@
-# Créditos de imágenes
+# Origen de las imágenes
 
-Fotografías de [Unsplash](https://unsplash.com) bajo la [Licencia Unsplash](https://unsplash.com/license)
-(uso comercial gratuito, sin atribución obligatoria). Son provisionales hasta contar con fotos propias.
+Todas las imágenes de la web son material propio de GEINTECH, retocado y recortado para la web
+(el logo y el isotipo están en `brand/`).
 
-`services/capacitacion.png` es una foto propia de GEINTECH (la misma del fondo del login de Moodle), aclarada para la web.
-
-| Archivo | Fuente |
+| Archivo | Contenido |
 | --- | --- |
-| images/hero-planta-industrial.png | https://unsplash.com/photos/interior-of-large-industrial-factory-SLIFI67jv5k |
-| images/nosotros-equipo.png | https://unsplash.com/photos/engineers-working-in-automotive-factory-WjOWazUPAss |
-| services/sistemas-integrados-gestion.png | https://unsplash.com/photos/a-man-standing-in-a-room-holding-a-clipboard-8iDaJg7TPz4 |
-| services/seguridad-salud-trabajo.png | https://unsplash.com/photos/man-in-orange-and-black-vest-wearing-white-helmet-holding-yellow-and-black-power-tool-VLPUm5wP5Z0 |
-| services/mantenimiento-industrial.png | https://unsplash.com/photos/a-man-works-on-industrial-machinery-xWUNZVW5JOg |
-| services/automatizacion-industrial.png | https://unsplash.com/photos/blue-industrial-robot-arm-in-factory-sz1CHL7Pky0 |
-| services/soluciones-tecnologicas.png | https://unsplash.com/photos/people-looking-at-laptop-in-workspace-bIltCMXIwRE |
+| `images/hero-mineria.png` | Camiones en una operación minera (fondo del inicio) |
+| `images/nosotros-equipo.png` | Equipo con chalecos de seguridad en una reunión de obra |
+| `services/sistemas-integrados-gestion.png` | Equipo trabajando con laptops frente a una pantalla |
+| `services/seguridad-salud-trabajo.png` | Patio de obra con zonas señalizadas |
+| `services/soluciones-tecnologicas.png` | Captura del Sistema Experto IPERC |
+| `services/capacitacion.png` | Capacitación en auditorio (misma foto del fondo del login de Moodle) |

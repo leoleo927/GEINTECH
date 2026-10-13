@@ -1,34 +1,38 @@
 ---
 import { Image } from 'astro:assets';
-import heroImage from '../../assets/images/hero-planta-industrial.png';
+import heroImage from '../../assets/images/hero-mineria.png';
 import Button from '../ui/Button.astro';
 import BrandBars from '../ui/BrandBars.astro';
 import Icon from '../ui/Icon.astro';
-import { company } from '../../data/site';
 import { stats } from '../../data/about';
 ---
 
 <section id="inicio" class="relative flex min-h-[92vh] items-center overflow-hidden bg-brand-navy-dark pt-28 pb-16 text-white">
-  <!-- Foto de fondo: el degradado oscurece solo el lado del texto -->
-  <div class="pointer-events-none absolute inset-0" aria-hidden="true">
-    <Image
-      src={heroImage}
-      alt=""
-      format="png"
-      widths={[800, 1600]}
-      sizes="100vw"
-      loading="eager"
-      fetchpriority="high"
-      class="animate-slow-zoom size-full object-cover"
-    />
-    <div class="absolute inset-0 bg-linear-to-r from-brand-navy-dark via-brand-navy-dark/85 to-brand-navy-dark/30"></div>
+  <!--
+    Foto de fondo. En pantallas grandes ocupa la derecha para que se vea el motivo
+    (los camiones) y el texto quede sobre el azul; en móvil cubre todo con una capa oscura.
+  -->
+  <div class="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+    <div class="absolute inset-y-0 right-0 w-full lg:w-[72%]">
+      <Image
+        src={heroImage}
+        alt=""
+        format="png"
+        widths={[640, 1280]}
+        sizes="(min-width: 1024px) 72vw, 100vw"
+        loading="eager"
+        fetchpriority="high"
+        class="animate-slow-zoom size-full object-cover object-[35%_center]"
+      />
+      <div class="absolute inset-0 bg-brand-navy-dark/75 lg:bg-transparent lg:bg-linear-to-r lg:from-brand-navy-dark lg:via-brand-navy-dark/45 lg:to-brand-navy-dark/10"></div>
+    </div>
   </div>
 
   <div class="relative mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="max-w-2xl">
       <div data-reveal="left">
         <BrandBars onDark />
-        <p class="mt-4 text-sm font-semibold tracking-widest text-slate-300 uppercase">{company.legalName}</p>
+        <!-- <p class="mt-4 text-sm font-semibold tracking-widest text-slate-300 uppercase">{company.legalName}</p> -->
       </div>
 
       <h1
@@ -36,12 +40,11 @@ import { stats } from '../../data/about';
         data-reveal="left"
         style="--reveal-delay: 120ms"
       >
-        Gestión y tecnología para la industria peruana
+        Soluciones integrales y tecnológicas para la industria
       </h1>
 
       <p class="mt-6 max-w-xl text-lg text-pretty text-slate-300" data-reveal="left" style="--reveal-delay: 240ms">
-        Sistemas de gestión, seguridad en el trabajo, mantenimiento, automatización y capacitación para
-        que tu operación funcione de forma segura y eficiente.
+        El aliado estratégico que tu gestión necesita
       </p>
 
       <div class="mt-10 flex flex-wrap gap-4" data-reveal="left" style="--reveal-delay: 360ms">

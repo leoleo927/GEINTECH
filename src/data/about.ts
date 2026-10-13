@@ -3,29 +3,41 @@
  */
 
 export const about = {
-  title: 'Experiencia en gestión, seguridad y tecnología industrial',
+  title: 'Experiencia en gestión, seguridad, salud ocupacional, medio ambiente y tecnología',
   intro:
-    'En GEINTECH ofrecemos soluciones integrales basadas en tecnología para la industria. Acompañamos a las organizaciones en la gestión de sus operaciones, desde el cumplimiento normativo y la seguridad de su personal hasta la automatización y digitalización de sus procesos.',
+    'Transformamos la seguridad y gestión industrial con tecnología aplicada. En GEINTECH (Gestión Integral y Tecnología S.A.C.) fusionamos la ingeniería de prevención de riesgos con el desarrollo de herramientas digitales propias. Ayudamos a empresas industriales, logísticas y contratistas a proteger a su personal, superar auditorías de homologación y cumplir con la normativa vigente sin llenar su operación de burocracia ni papel.',
   detail:
-    'Trabajamos de la mano con cada cliente: entendemos su realidad, proponemos soluciones prácticas y medimos los resultados para asegurar una mejora continua.',
+    'Más que consultores externos, somos tu aliado técnico en planta: diagnosticamos tus procesos críticos, entrenamos a tu equipo en campo y digitalizamos tu gestión para que tomes decisiones con datos en tiempo real.',
   mission:
-    'Brindar soluciones de gestión integral y tecnología que impulsen la eficiencia, la seguridad y la competitividad de las empresas industriales del Perú.',
+    'Proteger la vida de los trabajadores y garantizar la continuidad de las operaciones industriales mediante ingeniería de prevención, entrenamiento especializado y tecnología.',
   vision:
-    'Ser reconocidos como el aliado estratégico de referencia en gestión y tecnología industrial, destacando por nuestra innovación y compromiso con los resultados.',
+    'Liderar la transformación digital de la seguridad ocupacional en el Perú, convirtiendo la prevención de riesgos en un proceso automatizado, medible y sin burocracia para todas las empresas.',
   values: ['Compromiso', 'Integridad', 'Seguridad', 'Innovación', 'Mejora continua'],
 };
 
-// Motivos para elegirnos (se muestran junto a la foto de "Nosotros").
+// Motivos para elegirnos (se muestran junto a la foto de "Nosotros"): título + subtítulo.
 export const reasons = [
-  'Especialistas en gestión, seguridad y tecnología industrial',
-  'Soluciones a la medida de cada operación',
-  'Acompañamiento desde el diagnóstico hasta los resultados',
-  'Capacitación continua a través de nuestra Aula Virtual',
+  {
+    title: 'Plataforma digital propia',
+    text: 'Matrices IPERC dinámicas, auditorías e inspecciones móviles en tiempo real.',
+  },
+  {
+    title: 'Blindaje normativo y homologación',
+    text: 'Acompañamiento experto ante SUNAFIL y certificadoras (SGS, Bureau Veritas, Hodelpe).',
+  },
+  {
+    title: 'Entrenamiento Técnico e Híbrido',
+    text: 'Capacitación práctica en campo (herramientas de poder y alto riesgo) + Aula Virtual 24/7.',
+  },
+  {
+    title: 'Ingeniería a la Medida',
+    text: 'Soluciones diseñadas para la realidad operativa y presupuesto de tu planta o taller.',
+  },
 ];
 
 // Cifras destacadas del inicio. Reemplazar por datos reales cuando el cliente los confirme.
 export const stats = [
-  { value: 'ISO', label: 'Normas internacionales' },
-  { value: 'SST', label: 'Ley N.° 29783' },
-  { value: '4.0', label: 'Industria y tecnología' },
+  { value: 'SIG', label: 'Implementación ISO 9001, 14001 y 45001' },
+  { value: 'SSOMA', label: 'Ley 29783 | D.S. 005-2012-TR | D.S. 024-2016-EM' },
+  { value: 'SMART', label: 'IPERC Dinámico, Inspecciones Móviles' },
 ];

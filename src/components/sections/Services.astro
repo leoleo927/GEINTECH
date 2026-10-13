@@ -9,17 +9,17 @@ import { services } from '../../data/services';
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <SectionHeading
       eyebrow="Servicios"
-      title="Qué hacemos"
-      description="Servicios para ordenar, proteger y modernizar la operación de tu empresa."
+      title="Nuestras Soluciones"
+      description="Ingeniería, prevención y tecnología para blindar tu operación y asegurar tu crecimiento."
     />
 
-    <div class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    <div class="mt-14 grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
       {
         services.map((service, index) => (
           <article
             class="group flex flex-col overflow-hidden rounded-2xl bg-white shadow-sm transition duration-300 hover:-translate-y-1.5 hover:shadow-xl"
             data-reveal
-            style={`--reveal-delay: ${(index % 3) * 120}ms`}
+            style={`--reveal-delay: ${(index % 4) * 100}ms`}
           >
             {service.image ? (
               <div class="aspect-16/10 overflow-hidden">
@@ -28,7 +28,7 @@ import { services } from '../../data/services';
                   alt={service.title}
                   format="png"
                   widths={[400, 800]}
-                  sizes="(min-width: 1024px) 400px, (min-width: 640px) 50vw, 100vw"
+                  sizes="(min-width: 1280px) 300px, (min-width: 640px) 50vw, 100vw"
                   class="size-full object-cover transition duration-500 group-hover:scale-105"
                 />
               </div>

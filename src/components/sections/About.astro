@@ -18,11 +18,11 @@ const pillars = [
       <div class="overflow-hidden rounded-2xl shadow-xl" data-reveal="wipe">
         <Image
           src={aboutImage}
-          alt="Equipo de ingenieros revisando información en una planta industrial"
+          alt="Personal de GEINTECH con chalecos de seguridad durante una reunión de trabajo en obra"
           format="png"
           widths={[480, 960]}
           sizes="(min-width: 1024px) 50vw, 100vw"
-          class="aspect-4/5 w-full object-cover transition duration-700 hover:scale-105 lg:aspect-auto lg:h-140"
+          class="aspect-4/3 w-full object-cover object-[70%_center] transition duration-700 hover:scale-105 lg:aspect-auto lg:h-140"
         />
       </div>
 
@@ -30,19 +30,21 @@ const pillars = [
         <SectionHeading eyebrow="Nosotros" title={about.title} align="left" />
 
         <div data-reveal="right" style="--reveal-delay: 120ms">
-          <p class="mt-5 text-lg leading-relaxed text-pretty text-slate-600">{about.intro}</p>
-          <p class="mt-4 leading-relaxed text-pretty text-slate-600">{about.detail}</p>
+          <!-- Justificado desde tablet; en celular el ancho es muy corto y se ve mejor alineado a la izquierda -->
+          <p class="mt-5 leading-relaxed hyphens-auto text-slate-600 sm:text-justify">{about.intro}</p>
+          <p class="mt-4 leading-relaxed hyphens-auto text-slate-600 sm:text-justify">{about.detail}</p>
         </div>
 
         <ul class="mt-8 grid gap-4 sm:grid-cols-2">
           {
             reasons.map((reason, index) => (
               <li
-                class="border-l-2 border-brand-green pl-4 text-sm font-semibold text-brand-navy"
+                class="border-l-2 border-brand-green pl-4"
                 data-reveal="right"
                 style={`--reveal-delay: ${200 + index * 100}ms`}
               >
-                {reason}
+                <h3 class="font-bold text-brand-navy">{reason.title}</h3>
+                <p class="mt-1 text-sm leading-relaxed text-slate-600">{reason.text}</p>
               </li>
             ))
           }
@@ -64,13 +66,13 @@ const pillars = [
               <Icon name={pillar.icon} class:list={['size-7', pillar.iconColor]} />
               <h3 class="text-2xl font-bold text-brand-navy">{pillar.title}</h3>
             </div>
-            <p class="mt-4 leading-relaxed text-slate-600">{pillar.text}</p>
+            <p class="mt-4 leading-relaxed hyphens-auto text-slate-600 lg:text-justify">{pillar.text}</p>
           </article>
         ))
       }
     </div>
 
-    <div class="mt-14 flex flex-col items-center gap-5 sm:flex-row sm:justify-center" data-reveal>
+    <div class="mt-14 flex flex-col items-center gap-5 lg:flex-row lg:justify-center" data-reveal>
       <h3 class="text-sm font-bold tracking-widest text-brand-navy uppercase">Nuestros valores</h3>
       <ul class="flex flex-wrap justify-center gap-x-6 gap-y-2 text-slate-600">
         {
