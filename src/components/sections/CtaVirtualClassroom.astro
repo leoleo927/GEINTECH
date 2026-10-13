@@ -1,0 +1,30 @@
+---
+import Button from '../ui/Button.astro';
+import Icon from '../ui/Icon.astro';
+import { virtualClassroomUrl } from '../../data/site';
+---
+
+<!-- Franja promocional del Aula Virtual -->
+<section class="px-4 py-16 sm:px-6 lg:px-8">
+  <div
+    class="mx-auto max-w-7xl overflow-hidden rounded-2xl bg-linear-to-r from-brand-green to-brand-navy px-8 py-12 text-white shadow-xl sm:px-12"
+    data-reveal="zoom"
+  >
+    <div class="flex flex-col items-start justify-between gap-8 lg:flex-row lg:items-center">
+      <div class="max-w-2xl">
+        <span class="inline-flex items-center gap-2 text-sm font-bold tracking-widest text-white/80 uppercase">
+          <Icon name="academic" class="size-5" />
+          Aula Virtual
+        </span>
+        <h2 class="mt-3 text-2xl font-extrabold text-balance sm:text-3xl">Capacita a tu equipo desde cualquier lugar</h2>
+        <p class="mt-3 text-white/80">
+          Cursos de gestión, seguridad y tecnología industrial en nuestra plataforma virtual.
+        </p>
+      </div>
+      <Button href={virtualClassroomUrl} variant="light" size="lg" class="shrink-0">
+        Ingresar al Aula Virtual
+        <Icon name="arrowRight" class="size-5 transition-transform group-hover/btn:translate-x-1" />
+      </Button>
+    </div>
+  </div>
+</section>

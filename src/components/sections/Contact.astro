@@ -1,0 +1,129 @@
+---
+import SectionHeading from '../ui/SectionHeading.astro';
+import Icon from '../ui/Icon.astro';
+import { contact, mapsUrl, phoneHref } from '../../data/site';
+
+const contactItems = [
+  {
+    icon: 'phone',
+    label: 'Teléfonos',
+    links: contact.phones.map((phone) => ({ text: phone, href: phoneHref(phone) })),
+  },
+  {
+    icon: 'mail',
+    label: 'Correos',
+    links: contact.emails.map((email) => ({ text: email, href: `mailto:${email}` })),
+  },
+  {
+    icon: 'location',
+    label: 'Dirección',
+    links: [{ text: contact.address, href: mapsUrl, external: true }],
+  },
+] as const;
+
+const inputClass =
+  'mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-800 transition focus:border-brand-green focus:ring-2 focus:ring-brand-green/20 focus:outline-none';
+---
+
+<section id="contacto" class="py-20 lg:py-28">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <SectionHeading
+      eyebrow="Contacto"
+      title="¿En qué podemos ayudarte?"
+      description="Cuéntanos qué necesita tu empresa y te responderemos a la brevedad."
+    />
+
+    <div class="mt-14 grid gap-8 lg:grid-cols-5">
+      <!-- Datos de contacto -->
+      <ul class="space-y-4 lg:col-span-2" data-reveal="left">
+        {
+          contactItems.map((item) => (
+            <li class="flex items-start gap-4 rounded-2xl bg-surface p-5">
+              <span class="rounded-xl bg-brand-navy p-3 text-white">
+                <Icon name={item.icon} class="size-6" />
+              </span>
+              <div class="min-w-0">
+                <p class="text-sm font-semibold text-slate-500">{item.label}</p>
+                {item.links.map((link) => (
+                  <a
+                    href={link.href}
+                    class="block font-semibold break-words text-brand-navy transition-colors hover:text-brand-red"
+                    {...('external' in link && { target: '_blank', rel: 'noopener noreferrer' })}
+                  >
+                    {link.text}
+                  </a>
+                ))}
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+
+      <!--
+        Formulario: al enviarlo abre el cliente de correo con el mensaje armado.
+        Si luego se usa un servicio (Formspree, Web3Forms, etc.), basta con
+        cambiar el atributo `action` del formulario y quitar el script.
+      -->
+      <form
+        id="contact-form"
+        class="rounded-2xl border border-slate-100 bg-white p-6 shadow-xl sm:p-8 lg:col-span-3"
+        data-email={contact.formEmail}
+        data-reveal="right"
+        style="--reveal-delay: 120ms"
+      >
+        <div class="grid gap-5 sm:grid-cols-2">
+          <label class="block text-sm font-semibold text-brand-navy">
+            Nombre completo
+            <input name="name" type="text" required autocomplete="name" class={inputClass} />
+          </label>
+          <label class="block text-sm font-semibold text-brand-navy">
+            Empresa
+            <input name="company" type="text" autocomplete="organization" class={inputClass} />
+          </label>
+          <label class="block text-sm font-semibold text-brand-navy">
+            Correo electrónico
+            <input name="email" type="email" required autocomplete="email" class={inputClass} />
+          </label>
+          <label class="block text-sm font-semibold text-brand-navy">
+            Teléfono
+            <input name="phone" type="tel" autocomplete="tel" class={inputClass} />
+          </label>
+          <label class="block text-sm font-semibold text-brand-navy sm:col-span-2">
+            Mensaje
+            <textarea name="message" rows="5" required class={inputClass}></textarea>
+          </label>
+        </div>
+
+        <button
+          type="submit"
+          class="group mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-brand-red px-7 py-3.5 font-semibold text-white shadow-lg shadow-brand-red/25 transition duration-300 hover:-translate-y-0.5 hover:bg-brand-red-dark sm:w-auto"
+        >
+          Enviar mensaje
+          <Icon name="arrowRight" class="size-5 transition-transform group-hover:translate-x-1" />
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<script>
+  const form = document.querySelector<HTMLFormElement>('#contact-form');
+
+  form?.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const data = new FormData(form);
+    const field = (key: string) => String(data.get(key) ?? '').trim();
+
+    const subject = `Consulta desde la web - ${field('name')}`;
+    const body = [
+      `Nombre: ${field('name')}`,
+      `Empresa: ${field('company') || '-'}`,
+      `Correo: ${field('email')}`,
+      `Teléfono: ${field('phone') || '-'}`,
+      '',
+      field('message'),
+    ].join('\n');
+
+    window.location.href = `mailto:${form.dataset.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  });
+</script>

@@ -1,0 +1,266 @@
+/* =====================================================================
+   GEINTECH · Estilos del login del Aula Virtual (Moodle 4.5, tema Boost)
+
+   Dónde pegarlo:
+   Administración del sitio → Apariencia → Temas → Boost →
+   pestaña "Avanzado" → "SCSS en bruto".
+
+   Todo está limitado a la página de login (body#page-login-index),
+   así que no afecta al resto de Moodle (cursos, panel, etc.).
+   ===================================================================== */
+
+$gt-navy: #141f4d;
+$gt-navy-dark: #0b1233;
+$gt-green: #0f6b54;
+$gt-red: #e3262b;
+$gt-red-dark: #c11c21;
+$gt-text-muted: #5b6475;
+$gt-border: #d5dae3;
+
+body#page-login-index {
+  font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* ---- Fondo: la foto actual + capa con los colores de la marca ---- */
+  #page {
+    position: relative;
+    min-height: 100vh;
+    background-position: center;
+  }
+
+  #page::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    background: linear-gradient(
+      120deg,
+      rgba($gt-navy-dark, 0.94) 0%,
+      rgba($gt-navy, 0.8) 55%,
+      rgba($gt-green, 0.6) 100%
+    );
+  }
+
+  #page-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ---- Tarjeta de acceso ---- */
+  .login-container {
+    position: relative;
+    max-width: 440px;
+    padding: 3rem 2.5rem 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    animation: gt-rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  /* Boost muestra el logo en fila; lo pasamos a columna para poner la etiqueta debajo */
+  .login-logo {
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1.75rem;
+    text-align: center;
+  }
+
+  #logoimage {
+    max-height: 64px;
+  }
+
+  /* Franjas verde · rojo · azul del isotipo + etiqueta "Aula Virtual" (igual que en la web) */
+  .login-logo::after {
+    content: "Aula Virtual";
+    display: block;
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    background:
+      linear-gradient($gt-green, $gt-green) calc(50% - 38px) 0 / 32px 4px no-repeat,
+      linear-gradient($gt-red, $gt-red) 50% 0 / 32px 4px no-repeat,
+      linear-gradient($gt-navy, $gt-navy) calc(50% + 38px) 0 / 32px 4px no-repeat;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: $gt-green;
+  }
+
+  /* ---- Campos ---- */
+  .form-control-lg {
+    border: 1px solid $gt-border;
+    border-radius: 0.75rem;
+    padding: 0.8rem 1rem;
+    font-size: 1rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+
+  .form-control:focus {
+    border-color: $gt-green;
+    box-shadow: 0 0 0 0.2rem rgba($gt-green, 0.2);
+  }
+
+  /* ---- Botón Acceder ---- */
+  #loginbtn {
+    width: 100%;
+    padding: 0.8rem;
+    border: 0;
+    border-radius: 999px;
+    background: $gt-red;
+    font-weight: 600;
+    box-shadow: 0 10px 20px -8px rgba($gt-red, 0.6);
+    transition: background 0.2s, transform 0.2s;
+
+    &:hover,
+    &:focus {
+      background: $gt-red-dark;
+      transform: translateY(-1px);
+    }
+  }
+
+  .login-form-forgotpassword {
+    text-align: center;
+
+    a {
+      color: $gt-green;
+      font-weight: 500;
+    }
+  }
+
+  .login-divider {
+    margin: 1.5rem 0;
+    border-top-color: #e5e8ee;
+  }
+
+  /* ---- Acceso como invitado ---- */
+  h2.login-heading {
+    margin-bottom: 0.9rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-align: center;
+    color: $gt-text-muted;
+  }
+
+  #loginguestbtn {
+    width: 100%;
+    padding: 0.65rem;
+    border: 2px solid $gt-navy;
+    border-radius: 999px;
+    background: transparent;
+    color: $gt-navy;
+    font-weight: 600;
+    transition: background 0.2s, color 0.2s;
+
+    &:hover,
+    &:focus {
+      background: $gt-navy;
+      color: #fff;
+    }
+  }
+
+  /* ---- Idioma y aviso de cookies ---- */
+  .loginform > .d-flex {
+    justify-content: center;
+    align-items: center;
+    font-size: 0.85rem;
+
+    a,
+    .btn-secondary {
+      padding: 0;
+      border: 0;
+      background: none;
+      color: $gt-text-muted;
+      font-size: 0.85rem;
+    }
+
+    .btn-secondary:hover {
+      text-decoration: underline;
+    }
+  }
+
+  /* ---- Enlace "Volver a geintech.com.pe" (ver additional-html-body.html) ---- */
+  .gt-back-link {
+    display: inline-flex;
+    position: fixed;
+    top: 1.25rem;
+    left: 1.5rem;
+    z-index: 2;
+    align-items: center;
+    gap: 0.5rem;
+    color: rgba(#fff, 0.85);
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.2s;
+
+    &:hover {
+      color: #fff;
+    }
+  }
+}
+
+/* El enlace de volver solo se muestra en el login */
+.gt-back-link {
+  display: none;
+}
+
+@keyframes gt-rise {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (max-width: 575.98px) {
+  body#page-login-index {
+    #page {
+      padding-top: 3.5rem !important;
+    }
+
+    .login-container {
+      padding: 2.5rem 1.5rem 1.75rem;
+    }
+
+    /* Debajo de 576 px Moodle agrega un botón "ojo" junto a la contraseña */
+    .toggle-sensitive-wrapper {
+      .form-control-lg {
+        border-right: 0;
+        border-radius: 0.75rem 0 0 0.75rem;
+      }
+
+      .toggle-sensitive-btn {
+        border: 1px solid $gt-border;
+        border-left: 0;
+        border-radius: 0 0.75rem 0.75rem 0;
+        background: #fff;
+        color: $gt-text-muted;
+      }
+    }
+
+    .gt-back-link {
+      top: 0.9rem;
+      left: 1rem;
+    }
+
+    /* En móvil el pie de página se muestra debajo: lo integramos al fondo oscuro */
+    #page-footer {
+      position: relative;
+      z-index: 1;
+      background: $gt-navy-dark !important;
+      color: rgba(#fff, 0.7);
+
+      a {
+        color: #fff;
+      }
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body#page-login-index .login-container {
+    animation: none;
+  }
+}

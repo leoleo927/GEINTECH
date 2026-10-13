@@ -1,0 +1,82 @@
+---
+import { Image } from 'astro:assets';
+import heroImage from '../../assets/images/hero-planta-industrial.png';
+import Button from '../ui/Button.astro';
+import BrandBars from '../ui/BrandBars.astro';
+import Icon from '../ui/Icon.astro';
+import { company } from '../../data/site';
+import { stats } from '../../data/about';
+---
+
+<section id="inicio" class="relative flex min-h-[92vh] items-center overflow-hidden bg-brand-navy-dark pt-28 pb-16 text-white">
+  <!-- Foto de fondo: el degradado oscurece solo el lado del texto -->
+  <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+    <Image
+      src={heroImage}
+      alt=""
+      format="png"
+      widths={[800, 1600]}
+      sizes="100vw"
+      loading="eager"
+      fetchpriority="high"
+      class="animate-slow-zoom size-full object-cover"
+    />
+    <div class="absolute inset-0 bg-linear-to-r from-brand-navy-dark via-brand-navy-dark/85 to-brand-navy-dark/30"></div>
+  </div>
+
+  <div class="relative mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="max-w-2xl">
+      <div data-reveal="left">
+        <BrandBars onDark />
+        <p class="mt-4 text-sm font-semibold tracking-widest text-slate-300 uppercase">{company.legalName}</p>
+      </div>
+
+      <h1
+        class="mt-5 text-4xl leading-tight font-extrabold text-balance sm:text-5xl lg:text-6xl"
+        data-reveal="left"
+        style="--reveal-delay: 120ms"
+      >
+        Gestión y tecnología para la industria peruana
+      </h1>
+
+      <p class="mt-6 max-w-xl text-lg text-pretty text-slate-300" data-reveal="left" style="--reveal-delay: 240ms">
+        Sistemas de gestión, seguridad en el trabajo, mantenimiento, automatización y capacitación para
+        que tu operación funcione de forma segura y eficiente.
+      </p>
+
+      <div class="mt-10 flex flex-wrap gap-4" data-reveal="left" style="--reveal-delay: 360ms">
+        <Button href="#servicios" size="lg">
+          Ver servicios
+          <Icon name="arrowRight" class="size-5 transition-transform group-hover/btn:translate-x-1" />
+        </Button>
+        <Button href="#contacto" variant="ghost-light" size="lg">Contacto</Button>
+      </div>
+    </div>
+
+    <dl
+      class="mt-16 grid max-w-2xl grid-cols-3 divide-x divide-white/15 border-t border-white/15 pt-8"
+      data-reveal
+      style="--reveal-delay: 480ms"
+    >
+      {
+        stats.map((stat) => (
+          <div class="flex flex-col-reverse px-4 first:pl-0">
+            <dt class="mt-1 text-xs text-slate-400 sm:text-sm">{stat.label}</dt>
+            <dd class="text-2xl font-extrabold sm:text-3xl">{stat.value}</dd>
+          </div>
+        ))
+      }
+    </dl>
+  </div>
+
+  <!-- Indicador para bajar -->
+  <a
+    href="#nosotros"
+    class="absolute bottom-6 left-1/2 hidden -translate-x-1/2 text-white/60 transition-colors hover:text-white md:block"
+    aria-label="Bajar a Nosotros"
+  >
+    <svg class="size-7 animate-bounce" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"></path>
+    </svg>
+  </a>
+</section>

@@ -1,0 +1,87 @@
+---
+import { Image } from 'astro:assets';
+import Icon from '../ui/Icon.astro';
+import SectionHeading from '../ui/SectionHeading.astro';
+import aboutImage from '../../assets/images/nosotros-equipo.png';
+import { about, reasons } from '../../data/about';
+
+const pillars = [
+  { title: 'Misión', text: about.mission, icon: 'target', accent: 'border-brand-green', iconColor: 'text-brand-green' },
+  { title: 'Visión', text: about.vision, icon: 'eye', accent: 'border-brand-red', iconColor: 'text-brand-red' },
+] as const;
+---
+
+<section id="nosotros" class="py-20 lg:py-28">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+      <!-- La foto se descubre como una cortina al entrar en pantalla -->
+      <div class="overflow-hidden rounded-2xl shadow-xl" data-reveal="wipe">
+        <Image
+          src={aboutImage}
+          alt="Equipo de ingenieros revisando información en una planta industrial"
+          format="png"
+          widths={[480, 960]}
+          sizes="(min-width: 1024px) 50vw, 100vw"
+          class="aspect-4/5 w-full object-cover transition duration-700 hover:scale-105 lg:aspect-auto lg:h-140"
+        />
+      </div>
+
+      <div>
+        <SectionHeading eyebrow="Nosotros" title={about.title} align="left" />
+
+        <div data-reveal="right" style="--reveal-delay: 120ms">
+          <p class="mt-5 text-lg leading-relaxed text-pretty text-slate-600">{about.intro}</p>
+          <p class="mt-4 leading-relaxed text-pretty text-slate-600">{about.detail}</p>
+        </div>
+
+        <ul class="mt-8 grid gap-4 sm:grid-cols-2">
+          {
+            reasons.map((reason, index) => (
+              <li
+                class="border-l-2 border-brand-green pl-4 text-sm font-semibold text-brand-navy"
+                data-reveal="right"
+                style={`--reveal-delay: ${200 + index * 100}ms`}
+              >
+                {reason}
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-20 grid gap-6 md:grid-cols-2">
+      {
+        pillars.map((pillar, index) => (
+          <article
+            class:list={[
+              'rounded-2xl border-t-4 bg-surface p-8 transition duration-300 hover:-translate-y-1 hover:shadow-xl',
+              pillar.accent,
+            ]}
+            data-reveal={index === 0 ? 'left' : 'right'}
+          >
+            <div class="flex items-center gap-3">
+              <Icon name={pillar.icon} class:list={['size-7', pillar.iconColor]} />
+              <h3 class="text-2xl font-bold text-brand-navy">{pillar.title}</h3>
+            </div>
+            <p class="mt-4 leading-relaxed text-slate-600">{pillar.text}</p>
+          </article>
+        ))
+      }
+    </div>
+
+    <div class="mt-14 flex flex-col items-center gap-5 sm:flex-row sm:justify-center" data-reveal>
+      <h3 class="text-sm font-bold tracking-widest text-brand-navy uppercase">Nuestros valores</h3>
+      <ul class="flex flex-wrap justify-center gap-x-6 gap-y-2 text-slate-600">
+        {
+          about.values.map((value, index) => (
+            <li class="flex items-center gap-6">
+              {index > 0 && <span class="size-1.5 rounded-full bg-brand-red" aria-hidden="true" />}
+              {value}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</section>

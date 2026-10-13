@@ -1,0 +1,234 @@
+@charset "UTF-8";
+/* =====================================================================
+   GEINTECH · Estilos del login del Aula Virtual (Moodle 4.5, tema Boost)
+
+   Dónde pegarlo:
+   Administración del sitio → Apariencia → Temas → Boost →
+   pestaña "Avanzado" → "SCSS en bruto".
+
+   Todo está limitado a la página de login (body#page-login-index),
+   así que no afecta al resto de Moodle (cursos, panel, etc.).
+   ===================================================================== */
+body#page-login-index {
+  font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
+  /* ---- Fondo: la foto actual + capa con los colores de la marca ---- */
+}
+body#page-login-index #page {
+  position: relative;
+  min-height: 100vh;
+  background-position: center;
+}
+body#page-login-index #page::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(120deg, rgba(11, 18, 51, 0.94) 0%, rgba(20, 31, 77, 0.8) 55%, rgba(15, 107, 84, 0.6) 100%);
+}
+body#page-login-index #page-content {
+  position: relative;
+  z-index: 1;
+}
+body#page-login-index {
+  /* ---- Tarjeta de acceso ---- */
+}
+body#page-login-index .login-container {
+  position: relative;
+  max-width: 440px;
+  padding: 3rem 2.5rem 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  animation: gt-rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+body#page-login-index {
+  /* Boost muestra el logo en fila; lo pasamos a columna para poner la etiqueta debajo */
+}
+body#page-login-index .login-logo {
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1.75rem;
+  text-align: center;
+}
+body#page-login-index #logoimage {
+  max-height: 64px;
+}
+body#page-login-index {
+  /* Franjas verde · rojo · azul del isotipo + etiqueta "Aula Virtual" (igual que en la web) */
+}
+body#page-login-index .login-logo::after {
+  content: "Aula Virtual";
+  display: block;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  background: linear-gradient(#0f6b54, #0f6b54) calc(50% - 38px) 0/32px 4px no-repeat, linear-gradient(#e3262b, #e3262b) 50% 0/32px 4px no-repeat, linear-gradient(#141f4d, #141f4d) calc(50% + 38px) 0/32px 4px no-repeat;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #0f6b54;
+}
+body#page-login-index {
+  /* ---- Campos ---- */
+}
+body#page-login-index .form-control-lg {
+  border: 1px solid #d5dae3;
+  border-radius: 0.75rem;
+  padding: 0.8rem 1rem;
+  font-size: 1rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+body#page-login-index .form-control:focus {
+  border-color: #0f6b54;
+  box-shadow: 0 0 0 0.2rem rgba(15, 107, 84, 0.2);
+}
+body#page-login-index {
+  /* ---- Botón Acceder ---- */
+}
+body#page-login-index #loginbtn {
+  width: 100%;
+  padding: 0.8rem;
+  border: 0;
+  border-radius: 999px;
+  background: #e3262b;
+  font-weight: 600;
+  box-shadow: 0 10px 20px -8px rgba(227, 38, 43, 0.6);
+  transition: background 0.2s, transform 0.2s;
+}
+body#page-login-index #loginbtn:hover, body#page-login-index #loginbtn:focus {
+  background: #c11c21;
+  transform: translateY(-1px);
+}
+body#page-login-index .login-form-forgotpassword {
+  text-align: center;
+}
+body#page-login-index .login-form-forgotpassword a {
+  color: #0f6b54;
+  font-weight: 500;
+}
+body#page-login-index .login-divider {
+  margin: 1.5rem 0;
+  border-top-color: #e5e8ee;
+}
+body#page-login-index {
+  /* ---- Acceso como invitado ---- */
+}
+body#page-login-index h2.login-heading {
+  margin-bottom: 0.9rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-align: center;
+  color: #5b6475;
+}
+body#page-login-index #loginguestbtn {
+  width: 100%;
+  padding: 0.65rem;
+  border: 2px solid #141f4d;
+  border-radius: 999px;
+  background: transparent;
+  color: #141f4d;
+  font-weight: 600;
+  transition: background 0.2s, color 0.2s;
+}
+body#page-login-index #loginguestbtn:hover, body#page-login-index #loginguestbtn:focus {
+  background: #141f4d;
+  color: #fff;
+}
+body#page-login-index {
+  /* ---- Idioma y aviso de cookies ---- */
+}
+body#page-login-index .loginform > .d-flex {
+  justify-content: center;
+  align-items: center;
+  font-size: 0.85rem;
+}
+body#page-login-index .loginform > .d-flex a,
+body#page-login-index .loginform > .d-flex .btn-secondary {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: #5b6475;
+  font-size: 0.85rem;
+}
+body#page-login-index .loginform > .d-flex .btn-secondary:hover {
+  text-decoration: underline;
+}
+body#page-login-index {
+  /* ---- Enlace "Volver a geintech.com.pe" (ver additional-html-body.html) ---- */
+}
+body#page-login-index .gt-back-link {
+  display: inline-flex;
+  position: fixed;
+  top: 1.25rem;
+  left: 1.5rem;
+  z-index: 2;
+  align-items: center;
+  gap: 0.5rem;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+body#page-login-index .gt-back-link:hover {
+  color: #fff;
+}
+
+/* El enlace de volver solo se muestra en el login */
+.gt-back-link {
+  display: none;
+}
+
+@keyframes gt-rise {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@media (max-width: 575.98px) {
+  body#page-login-index #page {
+    padding-top: 3.5rem !important;
+  }
+  body#page-login-index .login-container {
+    padding: 2.5rem 1.5rem 1.75rem;
+  }
+  body#page-login-index {
+    /* Debajo de 576 px Moodle agrega un botón "ojo" junto a la contraseña */
+  }
+  body#page-login-index .toggle-sensitive-wrapper .form-control-lg {
+    border-right: 0;
+    border-radius: 0.75rem 0 0 0.75rem;
+  }
+  body#page-login-index .toggle-sensitive-wrapper .toggle-sensitive-btn {
+    border: 1px solid #d5dae3;
+    border-left: 0;
+    border-radius: 0 0.75rem 0.75rem 0;
+    background: #fff;
+    color: #5b6475;
+  }
+  body#page-login-index .gt-back-link {
+    top: 0.9rem;
+    left: 1rem;
+  }
+  body#page-login-index {
+    /* En móvil el pie de página se muestra debajo: lo integramos al fondo oscuro */
+  }
+  body#page-login-index #page-footer {
+    position: relative;
+    z-index: 1;
+    background: #0b1233 !important;
+    color: rgba(255, 255, 255, 0.7);
+  }
+  body#page-login-index #page-footer a {
+    color: #fff;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  body#page-login-index .login-container {
+    animation: none;
+  }
+}

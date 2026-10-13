@@ -1,0 +1,28 @@
+{
+  "name": "geintech",
+  "type": "module",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "check": "astro check",
+    "moodle:preview": "sass --watch moodle/login.scss:moodle/preview/login.css",
+    "moodle:build": "sass --no-source-map moodle/login.scss moodle/preview/login.css"
+  },
+  "dependencies": {
+    "@fontsource-variable/montserrat": "^5.3.0",
+    "@tailwindcss/vite": "^4.3.3",
+    "astro": "^7.3.8",
+    "tailwindcss": "^4.3.3"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "sass": "^1.105.1",
+    "typescript": "^6.0.3"
+  }
+}

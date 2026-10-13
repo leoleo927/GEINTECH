@@ -1,0 +1,77 @@
+---
+import { Image } from 'astro:assets';
+import isotipo from '../../assets/brand/isotipo-geintech.png';
+import Icon from '../ui/Icon.astro';
+import { company, contact, mapsUrl, navLinks, phoneHref, virtualClassroomUrl } from '../../data/site';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="bg-brand-navy-dark text-slate-300">
+  <div class="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-3 lg:px-8">
+    <div>
+      <a href="/#inicio" class="flex items-center gap-3">
+        <span class="rounded-xl bg-white p-2">
+          <Image src={isotipo} alt="" format="png" class="size-9" />
+        </span>
+        <span class="text-2xl font-extrabold tracking-wide text-white">{company.name}</span>
+      </a>
+      <p class="mt-4 max-w-xs text-sm leading-relaxed">{company.description}</p>
+    </div>
+
+    <div>
+      <h2 class="font-bold text-white">Navegación</h2>
+      <ul class="mt-4 space-y-2 text-sm">
+        {
+          navLinks.map((link) => (
+            <li>
+              <a href={link.href} class="transition-colors hover:text-white">
+                {link.label}
+              </a>
+            </li>
+          ))
+        }
+        <li>
+          <a href={virtualClassroomUrl} class="transition-colors hover:text-white">Aula Virtual</a>
+        </li>
+      </ul>
+    </div>
+
+    <div>
+      <h2 class="font-bold text-white">Contacto</h2>
+      <ul class="mt-4 space-y-3 text-sm">
+        <li class="flex items-start gap-3">
+          <Icon name="phone" class="size-5 shrink-0 text-brand-red" />
+          <span>
+            {
+              contact.phones.map((phone, index) => (
+                <>
+                  {index > 0 && ' / '}
+                  <a href={phoneHref(phone)} class="hover:text-white">{phone}</a>
+                </>
+              ))
+            }
+          </span>
+        </li>
+        {
+          contact.emails.map((email) => (
+            <li class="flex items-center gap-3">
+              <Icon name="mail" class="size-5 shrink-0 text-brand-red" />
+              <a href={`mailto:${email}`} class="break-all hover:text-white">{email}</a>
+            </li>
+          ))
+        }
+        <li class="flex items-start gap-3">
+          <Icon name="location" class="size-5 shrink-0 text-brand-red" />
+          <a href={mapsUrl} target="_blank" rel="noopener noreferrer" class="hover:text-white">{contact.address}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="border-t border-white/10">
+    <p class="mx-auto max-w-7xl px-4 py-6 text-center text-xs sm:px-6 lg:px-8">
+      © {year} {company.name} – {company.legalName} Todos los derechos reservados.
+    </p>
+  </div>
+</footer>

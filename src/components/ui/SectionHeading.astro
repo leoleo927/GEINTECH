@@ -1,0 +1,23 @@
+---
+/**
+ * Encabezado estándar de cada sección: franjas de marca + etiqueta + título + texto.
+ */
+import BrandBars from './BrandBars.astro';
+
+interface Props {
+  eyebrow: string;
+  title: string;
+  description?: string;
+  align?: 'center' | 'left';
+}
+
+const { eyebrow, title, description, align = 'center' } = Astro.props;
+const centered = align === 'center';
+---
+
+<div class:list={['max-w-2xl', centered && 'mx-auto text-center']} data-reveal>
+  <BrandBars class={centered ? 'justify-center' : undefined} />
+  <span class="mt-4 block text-sm font-bold tracking-widest text-brand-green uppercase">{eyebrow}</span>
+  <h2 class="mt-2 text-3xl font-extrabold text-balance text-brand-navy sm:text-4xl">{title}</h2>
+  {description && <p class="mt-4 text-lg text-pretty text-slate-600">{description}</p>}
+</div>

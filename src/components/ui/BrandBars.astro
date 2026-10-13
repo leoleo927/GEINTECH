@@ -1,0 +1,20 @@
+---
+/**
+ * Tres franjas con los colores del isotipo (verde, rojo, azul).
+ * Se usa como detalle de marca encima de los títulos.
+ * Crecen al aparecer en pantalla, por eso deben ir dentro de un bloque con `data-reveal`.
+ */
+interface Props {
+  class?: string;
+  /** Usa blanco en vez de azul marino, para fondos oscuros */
+  onDark?: boolean;
+}
+
+const { class: className, onDark = false } = Astro.props;
+
+const bars = ['bg-brand-green', 'bg-brand-red', onDark ? 'bg-white' : 'bg-brand-navy'];
+---
+
+<span class:list={['flex gap-1.5', className]} aria-hidden="true">
+  {bars.map((color, index) => <span class:list={['brand-bar h-1 w-8 rounded-full', color]} style={`transition-delay: ${200 + index * 150}ms`} />)}
+</span>

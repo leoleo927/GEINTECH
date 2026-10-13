@@ -1,0 +1,143 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../../assets/brand/logo-geintech.png';
+import Button from '../ui/Button.astro';
+import Icon from '../ui/Icon.astro';
+import { company, navLinks, virtualClassroomUrl } from '../../data/site';
+---
+
+<header
+  id="site-header"
+  class="fixed inset-x-0 top-0 z-50 bg-white/95 backdrop-blur-md transition-shadow duration-300"
+>
+  <!-- Barra de progreso de lectura -->
+  <div
+    id="scroll-progress"
+    class="absolute inset-x-0 bottom-0 h-0.5 origin-left scale-x-0 bg-brand-red"
+    aria-hidden="true"
+  >
+  </div>
+
+  <nav
+    class="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8"
+    aria-label="Navegación principal"
+  >
+    <a href="/#inicio" class="shrink-0" aria-label={`${company.name}, ir al inicio`}>
+      <Image src={logo} alt={company.name} format="png" class="h-11 w-auto sm:h-12" loading="eager" />
+    </a>
+
+    <!-- Menú de escritorio -->
+    <ul class="hidden items-center gap-8 lg:flex">
+      {
+        navLinks.map((link) => (
+          <li>
+            <a
+              href={link.href}
+              class="relative font-semibold text-brand-navy transition-colors after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:w-0 after:bg-brand-red after:transition-all hover:text-brand-red hover:after:w-full aria-[current=true]:text-brand-red aria-[current=true]:after:w-full"
+              data-nav-link
+            >
+              {link.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+
+    <div class="hidden lg:block">
+      <Button href={virtualClassroomUrl} variant="secondary">
+        <Icon name="academic" class="size-5" />
+        Aula Virtual
+      </Button>
+    </div>
+
+    <!-- Botón de menú móvil -->
+    <button
+      id="menu-toggle"
+      type="button"
+      class="rounded-md p-2 text-brand-navy lg:hidden"
+      aria-controls="mobile-menu"
+      aria-expanded="false"
+      aria-label="Abrir menú"
+    >
+      <Icon name="menu" class="size-7" />
+    </button>
+  </nav>
+
+  <!-- Menú móvil -->
+  <div id="mobile-menu" class="hidden border-t border-slate-100 bg-white lg:hidden">
+    <ul class="space-y-1 px-4 py-4">
+      {
+        navLinks.map((link) => (
+          <li>
+            <a
+              href={link.href}
+              class="block rounded-lg px-3 py-3 font-semibold text-brand-navy hover:bg-surface aria-[current=true]:bg-surface aria-[current=true]:text-brand-red"
+              data-mobile-link
+              data-nav-link
+            >
+              {link.label}
+            </a>
+          </li>
+        ))
+      }
+      <li class="pt-2">
+        <Button href={virtualClassroomUrl} variant="secondary" class="w-full">
+          <Icon name="academic" class="size-5" />
+          Aula Virtual
+        </Button>
+      </li>
+    </ul>
+  </div>
+</header>
+
+<script>
+  const header = document.getElementById('site-header');
+  const toggle = document.getElementById('menu-toggle');
+  const menu = document.getElementById('mobile-menu');
+
+  const progress = document.getElementById('scroll-progress');
+
+  // Sombra en el header y barra de progreso al hacer scroll
+  const onScroll = () => {
+    header?.classList.toggle('shadow-md', window.scrollY > 10);
+
+    const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+    const ratio = scrollable > 0 ? window.scrollY / scrollable : 0;
+    progress?.style.setProperty('transform', `scaleX(${ratio})`);
+  };
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  // Resalta en el menú la sección que se está viendo
+  const navLinks = document.querySelectorAll<HTMLAnchorElement>('[data-nav-link]');
+  const sections = document.querySelectorAll<HTMLElement>('main section[id]');
+
+  const sectionObserver = new IntersectionObserver(
+    (entries) => {
+      for (const entry of entries) {
+        if (!entry.isIntersecting) continue;
+        navLinks.forEach((link) => {
+          const isActive = link.hash === `#${entry.target.id}`;
+          if (isActive) link.setAttribute('aria-current', 'true');
+          else link.removeAttribute('aria-current');
+        });
+      }
+    },
+    // La sección cuenta como activa cuando cruza la franja central de la pantalla
+    { rootMargin: '-45% 0px -50% 0px' },
+  );
+  sections.forEach((section) => sectionObserver.observe(section));
+
+  // Abrir / cerrar menú móvil
+  const setMenuOpen = (open: boolean) => {
+    menu?.classList.toggle('hidden', !open);
+    toggle?.setAttribute('aria-expanded', String(open));
+    toggle?.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+  };
+
+  toggle?.addEventListener('click', () => setMenuOpen(menu?.classList.contains('hidden') ?? false));
+
+  document.querySelectorAll('[data-mobile-link]').forEach((link) => {
+    link.addEventListener('click', () => setMenuOpen(false));
+  });
+</script>
