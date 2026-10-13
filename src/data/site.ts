@@ -13,10 +13,15 @@ export const company = {
 
 export const contact = {
   phones: ['974 030 420', '984 476 322'],
-  emails: ['ventas@geintech.com.pe', 'egutierrezf@geintech.com.pe'],
+  emails: ['ventas@geintech.com.pe', 'egutierrezf@geintech.com.pe', 'mramosc@geintech.com.pe'],
   /** Correo que recibe los mensajes del formulario de contacto */
   formEmail: 'ventas@geintech.com.pe',
   address: 'Urb. Tilda, Calle Loreto, Ate – Lima',
+};
+
+/** Redes sociales. Dejar vacío para ocultar el ícono. */
+export const socials = {
+  linkedin: 'https://www.linkedin.com/company/gesti%C3%B3n-integral-y-tecnolog%C3%ADa-s-a-c/',
 };
 
 /** Enlace para llamar desde el celular (agrega el código de Perú +51) */
@@ -34,7 +39,7 @@ export const navLinks = [
 
 /**
  * Destino del botón "Aula Virtual": login del Moodle alojado en SiteGround.
- * Si el Moodle se mueve a un subdominio (p. ej. https://aula.geintech.com.pe),
- * basta con cambiar esta URL.
+ * Vive en un subdominio para que siga funcionando cuando `geintech.com.pe`
+ * apunte a Vercel. Si la dirección del Moodle cambia, basta con editar esta URL.
  */
-export const virtualClassroomUrl = 'https://geintech.com.pe/aulavirtual/login/index.php';
+export const virtualClassroomUrl = 'https://aulavirtual.geintech.com.pe/aulavirtual/login/index.php';

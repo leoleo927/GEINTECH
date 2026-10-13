@@ -2,7 +2,7 @@
 import { Image } from 'astro:assets';
 import logoNegativo from '../../assets/brand/logo-geintech-negativo.png';
 import Icon from '../ui/Icon.astro';
-import { company, contact, mapsUrl, navLinks, phoneHref, virtualClassroomUrl } from '../../data/site';
+import { company, contact, mapsUrl, navLinks, phoneHref, socials, virtualClassroomUrl } from '../../data/site';
 
 const year = new Date().getFullYear();
 ---
@@ -63,6 +63,16 @@ const year = new Date().getFullYear();
           <Icon name="location" class="size-5 shrink-0 text-brand-red" />
           <a href={mapsUrl} target="_blank" rel="noopener noreferrer" class="hover:text-white">{contact.address}</a>
         </li>
+        {
+          socials.linkedin && (
+            <li class="flex items-center gap-3">
+              <Icon name="linkedin" class="size-5 shrink-0 text-brand-red" />
+              <a href={socials.linkedin} target="_blank" rel="noopener noreferrer" class="hover:text-white">
+                Síguenos en LinkedIn
+              </a>
+            </li>
+          )
+        }
       </ul>
     </div>
   </div>

@@ -1,7 +1,7 @@
 ---
 import SectionHeading from '../ui/SectionHeading.astro';
 import Icon from '../ui/Icon.astro';
-import { contact, mapsUrl, phoneHref } from '../../data/site';
+import { contact, mapsUrl, phoneHref, socials } from '../../data/site';
 
 const contactItems = [
   {
@@ -19,6 +19,15 @@ const contactItems = [
     label: 'Dirección',
     links: [{ text: contact.address, href: mapsUrl, external: true }],
   },
+  ...(socials.linkedin
+    ? [
+        {
+          icon: 'linkedin' as const,
+          label: 'LinkedIn',
+          links: [{ text: 'Síguenos en LinkedIn', href: socials.linkedin, external: true }],
+        },
+      ]
+    : []),
 ] as const;
 
 const inputClass =
