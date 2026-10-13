@@ -14,16 +14,21 @@ const pillars = [
 <section id="nosotros" class="py-20 lg:py-28">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-      <!-- La foto se descubre como una cortina al entrar en pantalla -->
-      <div class="overflow-hidden rounded-2xl shadow-xl" data-reveal="wipe">
-        <Image
-          src={aboutImage}
-          alt="Personal de GEINTECH con chalecos de seguridad durante una reunión de trabajo en obra"
-          format="png"
-          widths={[480, 960]}
-          sizes="(min-width: 1024px) 50vw, 100vw"
-          class="aspect-4/3 w-full object-cover object-[70%_center] transition duration-700 hover:scale-105 lg:aspect-auto lg:h-140"
-        />
+      <!-- La foto se descubre como una cortina al entrar en pantalla (ver global.css) -->
+      <div
+        class="overflow-hidden rounded-2xl shadow-none transition-shadow duration-1000 [&.is-visible]:shadow-xl"
+        data-reveal="wipe"
+      >
+        <div>
+          <Image
+            src={aboutImage}
+            alt="Personal de GEINTECH con chalecos de seguridad durante una reunión de trabajo en obra"
+            format="png"
+            widths={[480, 960]}
+            sizes="(min-width: 1024px) 50vw, 100vw"
+            class="aspect-4/3 w-full object-cover object-[70%_center] transition duration-700 hover:scale-105 lg:aspect-auto lg:h-140"
+          />
+        </div>
       </div>
 
       <div>
